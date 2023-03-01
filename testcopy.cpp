@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
 int main(){
-    cout << "Huy dep trai ";
+    cout << "Huy xau trai ";
     return 0;
 }
