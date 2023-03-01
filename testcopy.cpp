@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
 int main(){
-    cout << "HOANG ";
+    cout << "Huy dep trai ";
     return 0;
 }
