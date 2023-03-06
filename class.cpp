@@ -59,6 +59,51 @@ void delLinkList(node*& head, node* tmp){
     head = nullptr;
     return;
 }
+node* mergeOrderList(node* head, node* phead) {
+    node* Chead = nullptr;
+    node* tmp = nullptr;
+    if (head == nullptr && phead == nullptr)
+        return nullptr;
+    if (head == nullptr)
+        return phead;
+    if (phead == nullptr)
+        return head;
+    if (head->data < phead->data) {
+        Chead = head;
+        head = head->next;
+    } else {
+        Chead = phead;
+        phead = phead->next;
+    }
+    tmp = Chead;
+    while (head->next != nullptr && phead->next != nullptr) {
+        if (head->data < phead->data) {
+            tmp->next = head;
+            head = head->next;
+        } else {
+            tmp->next = phead;
+            phead = phead->next;
+        }
+        tmp = tmp->next;
+    }
+    if (head != nullptr)
+        tmp->next = head;
+    if (phead != nullptr)
+        tmp->next = phead;
+    return Chead;
+}
+void insertValOrdered(node* head, int value){
+    for(node* tmp = head; tmp->next != nullptr; tmp = tmp->next){
+        // if(tmp == nullptr || head->data > x)
+        //     return insertAtBeginning(head, x);
+        if(tmp->next->data > value && tmp->data < value){
+            node* cur = new node();
+            cur->next = tmp->next;
+            cur->data = value;
+            tmp->next = cur;
+        }
+    }
+}
 int main(){
     node* head = new node();
     node* last = head;
